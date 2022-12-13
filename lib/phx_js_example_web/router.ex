@@ -18,6 +18,7 @@ defmodule PhxJsExampleWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    live "/pushing", PushingLive.Index, :index
   end
 
   # Other scopes may use custom stacks.
