@@ -43,3 +43,9 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+window.addEventListener(`phx:message_sended`, (e) => {
+  const el = document.querySelector('#message_container');
+  if (el === null) return;
+  el.innerHTML += e.detail.message + "<br/>";
+  console.log("message_sended", e)
+})

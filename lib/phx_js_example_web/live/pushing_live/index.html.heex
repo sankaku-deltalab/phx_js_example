@@ -1,1 +1,8 @@
 <h1>Listing Users</h1>
+
+<div id="message_container"></div>
+
+<form phx-change="validate" phx-submit="send_message_to_client">
+  <input type="text" name="message"/>
+  <%= submit "Send message via handle_event", class: "_anyclass" %>
+</form>
