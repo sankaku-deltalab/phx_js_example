@@ -6,3 +6,8 @@
   <input type="text" name="message"/>
   <%= submit "Send message via handle_event", class: "_anyclass" %>
 </form>
+
+<button phx-click="toggle_client_sider">Toggle Client Sider</button>
+<%= if @show_client_sider do %>
+  <div id="cs1" phx-hook="ClientSider">Client Sider is here</div>
+<% end %>
