@@ -26,6 +26,7 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 import {Hooks} from "./hooks"
+import {modifyWindow} from "./modify-window"
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: Hooks})
@@ -42,11 +43,6 @@ liveSocket.connect()
 // >> liveSocket.enableDebug()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
-window.liveSocket = liveSocket
+window["liveSocket"] = liveSocket
 
-window.addEventListener(`phx:message_sended`, (e) => {
-  const el = document.querySelector('#message_container');
-  if (el === null) return;
-  el.innerHTML += e.detail.message + "<br/>";
-  console.log("message_sended", e)
-})
+modifyWindow(window)
