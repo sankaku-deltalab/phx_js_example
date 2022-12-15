@@ -57,7 +57,8 @@ defmodule PhxJsExample.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "npm install --prefix assets"],
+      npm_install: [~S{run -e 'System.cmd("npm", ["install", "--prefix", "assets"])' }],
+      setup: ["deps.get", "npm_install"],
       "assets.deploy": ["esbuild default --minify", "phx.digest"]
     ]
   end
