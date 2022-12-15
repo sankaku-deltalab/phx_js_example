@@ -7,7 +7,12 @@
   <%= submit "Send message via handle_event", class: "_anyclass" %>
 </form>
 
-<button phx-click="toggle_client_sider">Toggle Client Sider</button>
-<%= if @show_client_sider do %>
+<button phx-click="toggle_client_sider" phx-value-id="cs1">Toggle Client Sider</button>
+<%= if Map.get(@show_client_sider, "cs1", false) do %>
   <div id="cs1" phx-hook="ClientSider">Client Sider is here</div>
+<% end %>
+
+<button phx-click="toggle_client_sider" phx-value-id="cs2">Toggle Client Sider2</button>
+<%= if Map.get(@show_client_sider, "cs2", false) do %>
+  <div id="cs2" phx-hook="ClientSider">Client Sider2 is here</div>
 <% end %>

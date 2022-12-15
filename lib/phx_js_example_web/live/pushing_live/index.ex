@@ -5,7 +5,7 @@ defmodule PhxJsExampleWeb.PushingLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    socket = socket |> assign(show_client_sider: false)
+    socket = socket |> assign(show_client_sider: %{})
     {:ok, socket}
   end
 
@@ -32,8 +32,10 @@ defmodule PhxJsExampleWeb.PushingLive.Index do
   end
 
   @impl true
-  def handle_event("toggle_client_sider", _params, socket) do
-    socket = socket |> update(:show_client_sider, &(not &1))
+  def handle_event("toggle_client_sider", %{"id" => id}, socket) do
+    socket =
+      socket |> update(:show_client_sider, fn mp -> Map.update(mp, id, true, &(not &1)) end)
+
     {:noreply, socket}
   end
 
