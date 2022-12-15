@@ -32,6 +32,21 @@ defmodule PhxJsExampleWeb.PushingLive.Index do
   end
 
   @impl true
+  def handle_event(
+        "send_message_to_client",
+        %{"message" => message},
+        socket
+      )
+      when message |> is_bitstring() do
+    socket =
+      socket
+      # emit event at window
+      |> push_event("message_sended", %{message: message})
+
+    {:noreply, socket}
+  end
+
+  @impl true
   def handle_event("validate", params, socket) do
     IO.inspect(%{event: "validate", params: params})
     IO.inspect(socket.assigns)
