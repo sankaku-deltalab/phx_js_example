@@ -23,7 +23,9 @@ defmodule PhxJsExampleWeb.PushingLive.Index do
       when message |> is_bitstring() do
     socket =
       socket
+      # emit event at window
       |> push_event("message_sended", %{message: message})
+      # emit event at all hook
       |> push_event("erace_value", %{id_for_filter: erace_id})
 
     {:noreply, socket}
