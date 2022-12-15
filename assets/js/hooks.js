@@ -16,3 +16,12 @@ Hooks.ClientSider = {
     clearInterval(this.tickId)
   }
 }
+
+Hooks.ValueEracable = {
+  mounted() {
+    this.handleEvent("erace_value", ({id_for_filter}) => {
+      if (this.el.id !== id_for_filter) return;
+      this.el.value = "";
+    })
+  }
+}

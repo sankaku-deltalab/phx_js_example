@@ -7,6 +7,12 @@
   <%= submit "Send message via handle_event", class: "_anyclass" %>
 </form>
 
+<form phx-change="validate" phx-submit="send_message_to_client">
+  <input hidden name="erace_id" value="message_input"/>
+  <input type="text" id="message_input" name="message" phx-hook="ValueEracable" />
+  <%= submit "Send message via handle_event and erace input", class: "_anyclass"%>
+</form>
+
 <button phx-click="toggle_client_sider" phx-value-id="cs1">Toggle Client Sider</button>
 <%= if Map.get(@show_client_sider, "cs1", false) do %>
   <div id="cs1" phx-hook="ClientSider">Client Sider is here</div>

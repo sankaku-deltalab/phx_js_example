@@ -15,11 +15,16 @@ defmodule PhxJsExampleWeb.PushingLive.Index do
   end
 
   @impl true
-  def handle_event("send_message_to_client", %{"message" => message}, socket)
+  def handle_event(
+        "send_message_to_client",
+        %{"message" => message, "erace_id" => erace_id},
+        socket
+      )
       when message |> is_bitstring() do
     socket =
       socket
       |> push_event("message_sended", %{message: message})
+      |> push_event("erace_value", %{id_for_filter: erace_id})
 
     {:noreply, socket}
   end
