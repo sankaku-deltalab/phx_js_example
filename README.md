@@ -1,18 +1,8 @@
 # PhxJsExample
 
-To start your Phoenix server:
+## How to copy typescript bolierplate
 
-  * Install dependencies with `mix deps.get`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+1. Create your repository with `mix phx.new`.
+2. Edit `aliases.setup` of `mix.exs` in your repo.
+3. Copy `assets` to your repo from this repo.
+4. Edit `assets/js/hooks` and `assets/js/modify-window.ts`.
